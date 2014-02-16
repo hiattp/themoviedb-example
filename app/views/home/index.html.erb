@@ -1,11 +1,4 @@
-<center>
-	<div>
-		<h1>Search for a movie</h1>
-		<%= form_tag("/search", :method => "get") do %>
-  		<%= text_field_tag(:query, nil, :class => "input-xlarge searchInput") %>
-		<% end %>
-	</div>
-</center>
+<%= render "search/form" %>
 
 <h2>Now Playing</h2>
 

@@ -1,0 +1,15 @@
+<div>
+	<h1>Discover Movies</h1>
+	<%= form_tag("/search", :method => "get") do %>
+    <h3>Filter by Genre:</h3>
+    <% Tmdb::Genre.list["genres"].each do |g| %>
+      <% checked = params["genres"].nil? ? false : params["genres"].include?(g["id"].to_s) %>
+      <%= check_box_tag("genres[]", g["id"], checked) %> <span><%= g["name"] %></span>
+      <%= " | " unless g["name"] == "Western" %>
+    <% end %>
+    <h3>Filter by Release Date</h3>
+    <div id="slider-range"></div><br/>
+    <%= text_field_tag(:years, params[:years], :class => "input-xlarge searchInput") %><br>
+    <input type="submit" value="Search" class="btn" />
+	<% end %>
+</div>
